@@ -1,0 +1,294 @@
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .app-container {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 25% 1fr;
+    height: 100vh;
+    gap: 10px;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    grid-row: span 2;
+    grid-column: 1 / 2;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    transition: background-color 0.3s ease;
+  }
+  .sidebar:hover {
+    background-color: #e9ecef; /* Slightly darker shade for hover */
+  }
+  
+  .sidebar h3 {
+    margin-bottom: 40px;
+    font-size: 25px;
+    text-align: center;
+  }
+  
+  .block-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 blocks per row */
+    grid-template-rows: repeat(2, auto); /* 2 rows */
+    gap: 25px;
+  
+  }
+  
+  .block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .block:hover {
+    transform: scale(1.1); /* Slightly enlarge block on hover */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow */
+  }
+  
+  
+  
+  .block-visual {
+    width: 80px;
+    height: 50px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  
+  .block-visual.warm-up {
+    background-color: #a389f4;
+  }
+  
+  .block-visual.active {
+    background: linear-gradient(to top, #a389f4 50%, #e5e5e5 50%);
+  }
+  
+  .block-visual.cool-down {
+    background: linear-gradient(to top, #a389f4 20%, #e5e5e5 80%);
+  }
+  
+  .block-visual.two-step-ramp {
+    background: none;
+}
+
+.block-visual.two-step-ramp .bar {
+    width: 39%;
+    margin: 0 1px; /* General margin for bars */
+    background-color: #a389f4;
+    border-radius: 3px;
+}
+
+.block-visual.two-step-ramp .bar.half {
+    height: 70%;
+    margin-right: 5; /* Remove right margin for the half bar */
+}
+
+.block-visual.two-step-ramp .bar.quarter {
+    height: 40%;
+    margin-left: -1px; /* Negative margin to overlap slightly with the half bar */
+}
+
+  
+  .block-visual.ramp-up,
+  .block-visual.ramp-down {
+    background: none;
+  }
+  
+  .block-visual.ramp-up .bar,
+  .block-visual.ramp-down .bar {
+    width: 20%;
+    margin: 0 2px;
+    background-color: #a389f4;
+    border-radius: 3px;
+  }
+  
+  .block-visual.ramp-up .bar.decreasing {
+    height: 25%;
+  }
+  
+  .block-visual.ramp-up .bar.medium {
+    height: 50%;
+  }
+  
+  .block-visual.ramp-up .bar.increasing {
+    height: 75%;
+  }
+  
+  .block-visual.ramp-up .bar.small {
+    height: 100%;
+  }
+  
+  .block-visual.ramp-down .bar.increasing {
+    height: 90%;
+  }
+  
+  .block-visual.ramp-down .bar.medium {
+    height: 50%;
+  }
+  
+  .block-visual.ramp-down .bar.decreasing {
+    height: 40%;
+  }
+  
+  .block-visual.ramp-down .bar.small {
+    height: 20%;
+  }
+  
+  
+  .workout-area {
+    grid-row: 1 / 2;
+    grid-column: 2 / 3;
+    padding: 20px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+
+  
+  .clear-btn {
+    align-self: flex-end;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .clear-btn:hover {
+    background-color: #d32f2f;
+    transform: scale(1.05);
+  }
+  
+  .workout-track {
+    flex: 1;
+    background-color: transparent;
+    outline: none; 
+    user-select: none;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 100px;
+    height: 600px; 
+    width: 800px;
+    box-sizing: border-box;
+  }
+  
+.workout-track:hover,
+.workout-track:active {
+  background-color: transparent !important; /* Override any default gray */
+}
+
+/* Optional: Prevent accidental hover effects in bars */
+.bar:active {
+  background-color: #a389f4; /* Keep the active state consistent */
+}
+
+/* Ensure the workout-area behaves cleanly */
+.workout-area {
+  background-color: transparent !important; /* Remove any unexpected background */
+  outline: none !important; /* Remove outlines */
+}
+  
+  .workout-block {
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+  }
+  
+  .workout-block.warm-up {
+    background-color: #a389f4;
+  }
+  
+  .workout-block.active {
+    background-color: #6b5df8;
+  }
+  
+  .workout-block.cool-down {
+    background-color: #dcd2f8;
+    color: black;
+  }
+  
+  .workout-block.two-step-ramp {
+    background-color: #a9a3f7;
+  }
+  
+  .workout-block.ramp-up {
+    background-color: #b5c1f8;
+  }
+  
+  .workout-block.ramp-down {
+    background-color: #92a0f5;
+  }
+  
+  
+ /* Bottom Section (Middle) */
+.bottom-section {
+  grid-row: 3 / 4;
+  grid-column: 1 / 3;
+  background-color: #f1f1f1;
+  padding: 20px;
+  border-top: 1px solid #ddd;
+  display: flex;
+  flex-direction: column;  /* Changed to column */
+  align-items: center;
+  transition: background-color 0.3s ease;
+}
+.bottom-section:hover {
+  background-color: #ececec; /* Slightly darker shade for hover */
+}
+.bottom-section h3 {
+  margin-bottom: 30px;
+  font-size: 20px;
+  text-align: center;
+}
+  
+.details-list {
+  display: flex;
+  flex-direction: column; /* Changed to column */
+  align-items: center; 
+  gap: 10px;
+}
+
+.detail-item {
+  width: 500%;
+  height: 30px;
+  font-size: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 5px;
+  text-align: left;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.detail-item:hover {
+  transform: translateY(-5px); /* Slightly lift the item on hover */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1); /* Add shadow */
+}
+
+.detail-name {
+  font-weight: bold;
+  color: #333;
+}
+
+  
